@@ -21,8 +21,9 @@
   let height = 1;
   let dpr = 1;
   let mode = "fern";
-  let modeStart = performance.now();
   let fernSegments = [];
+  let fernGrowth = 0;
+  let fernLastFrame = 0;
   let waterState = null;
   let pointer = { x: 0, y: 0, active: false };
 
@@ -231,8 +232,13 @@
     const pace = control("pace");
     const drift = control("drift");
     const detail = control("detail");
-    const elapsed = now - modeStart;
-    const progress = clamp(elapsed * (0.00009 + pace * 0.00030), 0, 1);
+    // Integrate growth per-frame so pace scales speed smoothly instead of
+    // jumping (elapsed * rate jumps when rate changes). Clamp dt so a
+    // backgrounded tab doesn't snap the fern to full growth on return.
+    const dt = fernLastFrame ? Math.min(now - fernLastFrame, 64) : 0;
+    fernLastFrame = now;
+    fernGrowth = clamp(fernGrowth + dt * (0.00009 + pace * 0.00030), 0, 1);
+    const progress = fernGrowth;
     const wave = progress * 1.22 - 0.08;
     const breath = Math.sin(now * 0.00032) * drift;
 
@@ -516,8 +522,9 @@
   }
 
   function resetMode() {
-    modeStart = performance.now();
     fernSegments = [];
+    fernGrowth = 0;
+    fernLastFrame = 0;
     waterState = null;
     if (mode === "fern") generateFern();
     if (mode === "water") resetWater();
@@ -542,8 +549,21 @@
     button.addEventListener("click", () => setMode(button.dataset.mode));
   });
 
-  Object.values(controls).forEach((input) => {
-    input.addEventListener("input", resetMode);
+  // pace and drift are read live every frame — changing them must not restart
+  // the fern. Only detail changes structure (iteration count), so it rebuilds
+  // the fern's geometry while preserving growth. Other modes keep full reset.
+  controls.pace.addEventListener("input", () => {
+    if (mode !== "fern") resetMode();
+  });
+  controls.drift.addEventListener("input", () => {
+    if (mode !== "fern") resetMode();
+  });
+  controls.detail.addEventListener("input", () => {
+    if (mode === "fern") {
+      generateFern();
+    } else {
+      resetMode();
+    }
   });
 
   canvas.addEventListener("pointermove", (event) => {
