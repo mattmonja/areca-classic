@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Areca Classic Studies</title>
+    <link rel="stylesheet" href="./src/classic.css" />
+  </head>
+  <body>
+    <main class="classic-stage" aria-label="Areca classic studies">
+      <canvas id="classic-stage"></canvas>
+      <a class="back" href="./index.html">areca</a>
+
+      <nav class="links" aria-label="Studies">
+        <a href="./examples.html">slime</a>
+        <button class="is-active" type="button" data-mode="fern">fern</button>
+        <button type="button" data-mode="water">water</button>
+        <button type="button" data-mode="voxel">voxel</button>
+      </nav>
+
+      <section class="controls" aria-label="Study controls">
+        <label>
+          <span>pace</span>
+          <input id="pace" type="range" min="0" max="1" step="0.01" value="0.48" />
+        </label>
+        <label>
+          <span>detail</span>
+          <input id="detail" type="range" min="0" max="1" step="0.01" value="0.66" />
+        </label>
+        <label>
+          <span>wind</span>
+          <input id="drift" type="range" min="0" max="1" step="0.01" value="0.48" />
+        </label>
+      </section>
+    </main>
+
+    <script src="./src/classic.js"></script>
+  </body>
+</html>
