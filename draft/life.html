@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#eceede" />
+  <title>Areca — Living drafts</title>
+  <meta name="description" content="Three living directions for Areca. Graphic design, social content and campaigns." />
+  <link rel="stylesheet" href="./src/life.css" />
+  <script src="./src/life-model.js" defer></script>
+  <script src="./src/life-view.js" defer></script>
+</head>
+<body data-look="cells">
+  <nav class="draft-nav" aria-label="Compare drafts">
+    <a href="./index.html">areca</a>
+    <div class="draft-options">
+      <button type="button" data-look="cells" aria-pressed="true">Cells</button>
+      <button type="button" data-look="current" aria-pressed="false">Current</button>
+      <button type="button" data-look="type" aria-pressed="false">Type</button>
+    </div>
+    <a class="original-link" href="./boids.html">Try the flock</a>
+  </nav>
+  <main class="composition" id="composition">
+    <canvas id="life-canvas" aria-label="An evolving continuous cellular automaton. Drag to seed new life." role="img"></canvas>
+    <header class="site-header agency-text">
+      <p>Design & marketing</p>
+      <nav aria-label="Agency navigation"><button id="about-open" aria-haspopup="dialog">About</button><a href="mailto:hello@arecacreative.com">Contact</a></nav>
+    </header>
+    <h1 class="wordmark agency-text">areca</h1>
+    <div class="services agency-text"><p>Graphic design.<br>Social content.<br>Campaigns.</p><a href="mailto:hello@arecacreative.com">hello@arecacreative.com</a></div>
+    <div class="interaction-note" id="interaction-note">Drag to add life</div>
+    <div class="canvas-fallback" id="canvas-fallback" hidden>The animation isn’t available in this browser.</div>
+  </main>
+  <footer class="controls">
+    <button id="text-toggle" type="button" aria-pressed="false">Hide type</button>
+    <div class="simulation-controls"><label for="pace">Pace <input type="range" id="pace" min="1" max="8" value="3" /></label><button id="pause-life" type="button" aria-pressed="false">Pause</button><button id="seed-life" type="button">Reseed</button></div>
+  </footer>
+  <dialog id="about" aria-labelledby="about-title"><form method="dialog"><button aria-label="Close agency information">Close</button></form><h2 id="about-title">Design<br>& marketing.</h2><p>Areca is a design and marketing agency.</p><p>We create visual content for brands: social posts, short-form video, product imagery and campaigns.</p><a href="mailto:hello@arecacreative.com">hello@arecacreative.com</a></dialog>
+  <p class="sr-only" role="status" aria-live="polite" id="status"></p>
+</body>
+</html>

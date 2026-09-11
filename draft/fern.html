@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#eeeede" />
+  <meta name="description" content="Areca. Design and marketing. Graphic design, social content and campaigns." />
+  <title>Areca — Design & Marketing</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23eeeede'/%3E%3Ctext x='12' y='48' font-family='Georgia,serif' font-size='56' fill='%231b3324'%3Ea%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./src/draft.css" />
+  <script src="./src/botanical.js" defer></script>
+  <script src="./src/draft.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#about">Skip to agency information</a>
+  <main class="page">
+    <header class="topline">
+      <p>Design & marketing</p>
+      <nav aria-label="Main navigation">
+        <button type="button" id="about-open" aria-haspopup="dialog">About</button>
+        <a href="mailto:hello@arecacreative.com">Contact</a>
+      </nav>
+    </header>
+    <section class="cover" aria-label="Areca design and marketing agency">
+      <div class="botanical-field" role="img" aria-label="The original Areca fractal: branching green strokes and unfolding leaves, moving in the breeze.">
+        <canvas id="botanical" aria-hidden="true"></canvas>
+      </div>
+      <h1>areca</h1>
+      <div class="agency-copy">
+        <p>Graphic design.<br>Social content.<br>Campaigns.</p>
+        <a href="mailto:hello@arecacreative.com">hello@arecacreative.com</a>
+      </div>
+      <div class="play-controls" aria-label="Fern controls">
+        <button type="button" id="regrow">Regrow</button>
+        <button type="button" id="pause" aria-pressed="false">Pause</button>
+        <button type="button" id="tune" aria-controls="tune-panel" aria-expanded="false">Adjust</button>
+      </div>
+      <div id="tune-panel" class="tune-panel" hidden>
+        <label for="wind"><span>Wind</span><input id="wind" type="range" min="0" max="100" step="0.1" value="40.2" /></label>
+        <label for="fullness"><span>Detail</span><input id="fullness" type="range" min="0" max="100" value="64" /></label>
+      </div>
+      <button id="garden" class="garden-toggle" type="button" aria-pressed="false">Just the fern</button>
+      <noscript><p class="no-js">For agency enquiries, write to <a href="mailto:hello@arecacreative.com">hello@arecacreative.com</a>.</p></noscript>
+    </section>
+    <footer><span>Areca Creative</span><a href="./boids.html">Living drafts</a></footer>
+  </main>
+  <dialog id="about" aria-labelledby="about-title">
+    <form method="dialog"><button type="submit" class="close-about" aria-label="Close agency information">Close</button></form>
+    <h2 id="about-title">Design<br>& marketing.</h2>
+    <p>Areca is a design and marketing agency.</p>
+    <p>We create visual content for brands: social posts, short-form video, product imagery and campaigns.</p>
+    <a href="mailto:hello@arecacreative.com">hello@arecacreative.com</a>
+  </dialog>
+  <p class="sr-only" id="study-status" role="status" aria-live="polite"></p>
+</body>
+</html>

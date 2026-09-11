@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#eeeede" />
+  <title>Areca — Palm & flock</title>
+  <meta name="description" content="A low-poly flock for Areca. Design and marketing." />
+  <link rel="stylesheet" href="./src/boids.css" />
+  <script src="./src/boids-settings.js" defer></script>
+  <script src="./src/botanical.js" defer></script>
+  <script src="./src/boids-model.js" defer></script>
+  <script src="./src/boids-view.js" defer></script>
+</head>
+<body>
+  <nav class="draft-nav" aria-label="Compare drafts">
+    <a href="./index.html">areca</a>
+    <div class="draft-options"><a href="./fern.html">Fern</a><a href="./life.html?look=current">Life</a><a href="./boids.html" aria-current="page">Flock</a></div>
+    <button id="palette" type="button" aria-pressed="false">Night</button>
+  </nav>
+  <main class="composition" id="composition">
+    <canvas id="flock-back" aria-hidden="true"></canvas>
+    <header class="site-header agency-text">
+      <p>Design & marketing</p>
+      <nav aria-label="Agency navigation"><button id="about-open" type="button" aria-haspopup="dialog">About</button><a href="mailto:hello@arecacreative.com">Contact</a></nav>
+    </header>
+    <h1 class="wordmark agency-text">areca</h1>
+    <canvas id="palm-canvas" role="img" aria-label="The original Areca palm fractal, with branches that sway in the wind."></canvas>
+    <canvas id="flock-front" role="img" aria-label="A flock of green, faceted birds flying around Areca. Move your pointer to part them, or hold to draw them closer."></canvas>
+    <div class="services agency-text"><p>Graphic design.<br>Social content.<br>Campaigns.</p><a href="mailto:hello@arecacreative.com">hello@arecacreative.com</a></div>
+    <p class="interaction-note" id="interaction-note">Move to scatter. Hold to gather.<br>Leave them to find a branch.</p>
+    <p class="canvas-fallback" id="canvas-fallback" hidden>The animation isn’t available in this browser.</p>
+  </main>
+  <footer class="controls" aria-label="Flock controls">
+    <button id="text-toggle" type="button" aria-pressed="false">Hide type</button>
+    <div class="simulation-controls"><button id="scatter-flock" type="button">Take flight</button><button id="adjust-toggle" type="button" aria-expanded="true" aria-controls="adjust-panel">Adjust</button></div>
+  </footer>
+  <aside id="adjust-panel" class="adjust-panel" aria-label="Palm and flock settings">
+    <div class="panel-heading"><h2>Palm & flock</h2><button id="adjust-close" type="button" aria-label="Close settings">Close</button></div>
+    <p class="panel-intro">Every setting stays in this link. Keep a version when it feels right.</p>
+    <div id="parameter-groups" class="parameter-groups"></div>
+    <div class="save-controls"><button id="keep-settings" type="button">Keep this</button><button id="restore-settings" type="button" hidden>Restore</button><button id="copy-settings" type="button">Copy link</button><button id="reset-settings" type="button">Reset</button></div>
+    <p class="save-note" id="save-note" role="status">Settings save as you adjust.</p>
+    <a id="settings-link" class="settings-link" hidden>Open these settings</a>
+  </aside>
+  <dialog id="about" aria-labelledby="about-title"><form method="dialog"><button aria-label="Close agency information">Close</button></form><h2 id="about-title">Design<br>& marketing.</h2><p>Areca is a design and marketing agency.</p><p>We create visual content for brands: social posts, short-form video, product imagery and campaigns.</p><a href="mailto:hello@arecacreative.com">hello@arecacreative.com</a></dialog>
+  <p class="sr-only" role="status" aria-live="polite" id="status"></p>
+</body>
+</html>
