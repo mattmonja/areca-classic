@@ -1,26 +1,54 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#eeeede" />
-  <title>Areca — Just the fern</title>
-  <meta name="description" content="The original Areca palm fractal, on its own." />
+  <meta name="description" content="Areca. Design and marketing. Graphic design, social content and campaigns." />
+  <title>Areca — Fern</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23eeeede'/%3E%3Ctext x='12' y='48' font-family='Georgia,serif' font-size='56' fill='%231b3324'%3Ea%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="./src/fern-only.css" />
   <script src="./src/botanical.js" defer></script>
   <script src="./src/fern-only.js" defer></script>
 </head>
 <body>
-  <main aria-label="The original Areca fern">
-    <canvas id="fern-only" role="img" aria-label="A branching green palm fractal, swaying gently."></canvas>
-    <nav aria-label="Other drafts"><a href="./boids.html">Palm & flock</a><a href="./fern.html" id="agency-link">Agency version</a></nav>
-    <button id="adjust-fern" type="button" aria-expanded="false" aria-controls="fern-settings">Adjust</button>
-    <section id="fern-settings" aria-label="Fern settings" hidden>
-      <label for="fern-wind">Wind <output id="wind-value" for="fern-wind">0.4</output></label><input id="fern-wind" type="range" min="0" max="1" step="0.01" value="0.4" />
-      <label for="fern-detail">Detail <output id="detail-value" for="fern-detail">0.64</output></label><input id="fern-detail" type="range" min="0.25" max="1" step="0.01" value="0.64" />
-      <button id="regrow-fern" type="button">Regrow</button>
+  <a class="skip" href="#about">Skip to agency information</a>
+  <main class="page">
+    <header class="topline">
+      <p>Design & marketing</p>
+      <nav aria-label="Main navigation">
+        <button type="button" id="about-open" aria-haspopup="dialog">About</button>
+        <a href="mailto:hello@arecacreative.com">Contact</a>
+      </nav>
+    </header>
+    <section class="cover" aria-label="Areca design and marketing agency">
+      <div class="botanical-field" role="img" aria-label="The original Areca fractal: branching green strokes and unfolding leaves, moving in the breeze.">
+        <canvas id="fern-only" aria-hidden="true"></canvas>
+      </div>
+      <h1>areca</h1>
+      <div class="agency-copy">
+        <p>Graphic design.<br>Social content.<br>Campaigns.</p>
+        <a href="mailto:hello@arecacreative.com">hello@arecacreative.com</a>
+      </div>
+      <div class="play-controls" aria-label="Fern controls">
+        <button type="button" id="regrow">Regrow</button>
+        <button type="button" id="tune" aria-controls="tune-panel" aria-expanded="false">Adjust</button>
+      </div>
+      <div id="tune-panel" class="tune-panel" hidden>
+        <label for="wind"><span>Wind <output id="wind-value" for="wind">0.4</output></span><input id="wind" type="range" min="0" max="1" step="0.01" value="0.4" /></label>
+        <label for="detail"><span>Detail <output id="detail-value" for="detail">0.64</output></span><input id="detail" type="range" min="0.25" max="1" step="0.01" value="0.64" /></label>
+      </div>
+      <noscript><p class="no-js">For agency enquiries, write to <a href="mailto:hello@arecacreative.com">hello@arecacreative.com</a>.</p></noscript>
     </section>
-    <p id="fern-error" hidden>The fern animation is unavailable in this browser.</p>
+    <footer><span>Areca Creative</span><a href="./boids.html">Palm & flock</a></footer>
   </main>
+  <dialog id="about" aria-labelledby="about-title">
+    <form method="dialog"><button type="submit" class="close-about" aria-label="Close agency information">Close</button></form>
+    <h2 id="about-title">Design<br>& marketing.</h2>
+    <p>Areca is a design and marketing agency.</p>
+    <p>We create visual content for brands: social posts, short-form video, product imagery and campaigns.</p>
+    <a href="mailto:hello@arecacreative.com">hello@arecacreative.com</a>
+  </dialog>
+  <p class="sr-only" id="study-status" role="status" aria-live="polite"></p>
 </body>
 </html>
