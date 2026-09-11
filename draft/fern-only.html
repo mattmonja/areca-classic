@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#eeeede" />
+  <title>Areca — Just the fern</title>
+  <meta name="description" content="The original Areca palm fractal, on its own." />
+  <link rel="stylesheet" href="./src/fern-only.css" />
+  <script src="./src/botanical.js" defer></script>
+  <script src="./src/fern-only.js" defer></script>
+</head>
+<body>
+  <main aria-label="The original Areca fern">
+    <canvas id="fern-only" role="img" aria-label="A branching green palm fractal, swaying gently."></canvas>
+    <nav aria-label="Other drafts"><a href="./boids.html">Palm & flock</a><a href="./fern.html" id="agency-link">Agency version</a></nav>
+    <button id="adjust-fern" type="button" aria-expanded="false" aria-controls="fern-settings">Adjust</button>
+    <section id="fern-settings" aria-label="Fern settings" hidden>
+      <label for="fern-wind">Wind <output id="wind-value" for="fern-wind">0.4</output></label><input id="fern-wind" type="range" min="0" max="1" step="0.01" value="0.4" />
+      <label for="fern-detail">Detail <output id="detail-value" for="fern-detail">0.64</output></label><input id="fern-detail" type="range" min="0.25" max="1" step="0.01" value="0.64" />
+      <button id="regrow-fern" type="button">Regrow</button>
+    </section>
+    <p id="fern-error" hidden>The fern animation is unavailable in this browser.</p>
+  </main>
+</body>
+</html>

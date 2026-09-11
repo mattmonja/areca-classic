@@ -41,7 +41,7 @@ function mount(fernCanvas, options = {}) {
   const sourceCtx = fernCanvas.getContext('2d');
   if (!sourceCtx) return null;
   const media = matchMedia('(prefers-reduced-motion: reduce)');
-  let reduceMotion = media.matches;
+  let reduceMotion = media.matches, mature = Boolean(options.mature);
   const fernParams = { grow: .6692, detail: .64, wind: .402 };
   let width = 1, height = 1, dpr = 1;
   let time = 0, start = 0, segments = [], cachedDetail = -1, perchSegments = [];
@@ -193,7 +193,7 @@ function drawSource(now) {
     drawWind(now);
 
     const elapsed = now - start;
-    const progress = options.mature || reduceMotion ? 1 : clamp(elapsed * (0.00008 + fernParams.grow * 0.00035), 0, 1);
+    const progress = mature || reduceMotion ? 1 : clamp(elapsed * (0.00008 + fernParams.grow * 0.00035), 0, 1);
     const wave = progress * 1.20 - 0.06;
     const revealWidth = mix(0.030, 0.090, fernParams.detail);
     const breath = Math.sin(now * 0.00032) * fernParams.wind;
@@ -333,6 +333,7 @@ function drawSource(now) {
       });
     },
     regrow() {
+      mature = false;
       start = paused ? time - 10000 : time;
       render(); resume();
     },
